@@ -1,0 +1,15 @@
+# Ignorar el archivo con credenciales
+.env
+
+# Ignorar la carpeta del entorno virtual
+venv/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de IDEs (ejemplo VSCode o PyCharm)
+.vscode/
+.idea/

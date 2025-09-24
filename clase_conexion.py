@@ -1,12 +1,21 @@
 import pyodbc # Importamos la librería pyodbc que permite conectarse y operar con bases de datos ODBC en Python.
-
+import os
+from dotenv import load_dotenv  # Importamos la función load_dotenv desde la librería dotenv para cargar variables de entorno desde un archivo .env
+# Cargamos las variables desde el archivo .env
+load_dotenv()
 # Definimos una clase llamada Conexion que encapsula toda la funcionalidad relacionada con la conexión a la base de datos.
 class Conexion:
     def __init__(self):  #El método constructor (__init__) se ejecuta cuando se crea una instancia de la clase.
+        driver = os.getenv("DB_DRIVER")
+        server = os.getenv("DB_SERVER")
+        database = os.getenv("DB_NAME")
+        
+        
+        
         # Definimos la cadena de conexión que especifica el controlador de la base de datos, el servidor, la base de datos y el tipo de autenticación.
-        self.cadena_conexion = '''DRIVER={SQL SERVER};
-                                  Server=Go-8ZG6503\\MSSSQLSERVER_DEV;
-                                  Database=Coca_Cola;
+        self.cadena_conexion = f'''DRIVER={driver};
+                                  Server={server};
+                                  Database={database};
                                   Trusted_Connection=yes;'''
         # Inicializamos los atributos conn y cursor a None. Estos serán usados para almacenar la conexión y el cursor de la base de datos. NO ES NECESARIO
         self.conn = None
